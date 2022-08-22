@@ -19,14 +19,17 @@ import com.example.springjpanew.entities.Cliente;
 import com.example.springjpanew.entities.Ordem;
 import com.example.springjpanew.services.ClienteService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/clientes")
+@Api(tags = "Cliente")
 public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
 	
-	@PostMapping
+	@PostMapping 
 	public ClienteDto criar(@Valid @RequestBody ClienteDto clienteDto) {	
 		clienteService.criar(clienteDto);		
 		return clienteDto;

@@ -18,8 +18,11 @@ import com.example.springjpanew.entities.Ordem;
 import com.example.springjpanew.entities.OrdemItem;
 import com.example.springjpanew.services.OrdemService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/ordens")
+@Api(tags = "Ordem de serviço")
 public class OrdemController {
 
 	@Autowired
