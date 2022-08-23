@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.springjpanew.dtos.ClienteDto;
+import com.example.springjpanew.dtos.mappers.ClienteMapper;
 import com.example.springjpanew.entities.Cliente;
 import com.example.springjpanew.entities.Ordem;
 import com.example.springjpanew.repositories.ClienteRepository;
@@ -15,18 +16,22 @@ import com.example.springjpanew.repositories.OrdemRepository;
 public class ClienteService {
 
 	private ClienteRepository clienteRepository;
+	private ClienteMapper clienteMapper;
 
 	public ClienteService(ClienteRepository clienteRepository) {
 		this.clienteRepository = clienteRepository;
+		this.clienteMapper = new ClienteMapper();
 	}
 
-	public Cliente criar(ClienteDto clienteDto) {
-		Cliente cliente = clienteDto.criarCliente();
+	public Cliente criar(ClienteDto clienteDto) { 
+		Cliente cliente = clienteMapper.toCliente(clienteDto);
 		return clienteRepository.save(cliente);
 	}
 
-	public List<Cliente> listar() {
-		return clienteRepository.findAll();
+	public List<ClienteDto> listar() {
+		List<Cliente> clientes = clienteRepository.findAll();
+		ClienteMapper clienteMapper = new ClienteMapper();
+		return clienteMapper.toParkingDTOList(clientes); 
 	}
 
 	public Boolean remover(Long id) {

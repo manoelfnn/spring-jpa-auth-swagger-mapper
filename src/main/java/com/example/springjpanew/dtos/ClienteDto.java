@@ -38,12 +38,4 @@ public class ClienteDto {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-	public Cliente criarCliente() {
-		Cliente cliente = new Cliente();
-		cliente.setNome(this.nome);
-		cliente.setTelefone(this.telefone);
-		cliente.setEndereco(this.endereco);
-		return cliente;
-	}
 }

@@ -36,7 +36,7 @@ public class ClienteController {
 	}	
 
 	@GetMapping
-	public List<Cliente> listar() {
+	public List<ClienteDto> listar() {
 		return clienteService.listar();
 	}
 	
